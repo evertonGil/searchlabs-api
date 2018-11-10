@@ -1,0 +1,38 @@
+{
+  "name": "internet-banking-gamaacademy",
+  "version": "1.0.0",
+  "description": "API de consulta do internet banking",
+  "main": "index.js",
+  "engines": {
+    "node": "8.9.3"
+  },
+  "scripts": {
+    "start": "nodemon app",
+    "test": "node node_modules/mocha/bin/mocha",
+    "build": " concurrently  \"mongod\" \" set NODE_ENV = teste\" \"node app\"",
+    "watch": "babel public/js/app-es6 -d public/js/app --source-maps --watch"
+  },
+  "author": "Grupo 2 gamaAcademy",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "consign": "^0.1.6",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-validator": "^5.3.0",
+    "jsonwebtoken": "^5.7.0",
+    "moment": "^2.20.1",
+    "mongoose": "^5.3.11",
+    "morgan": "^1.9.0",
+    "nodemailer": "^4.4.2",
+    "nodemon": "^1.14.11",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "mocha": "^3.5.1",
+    "mongo-seed": "^0.6.0"
+  }
+}
