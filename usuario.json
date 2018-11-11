@@ -1,0 +1,16 @@
+[
+    {
+        "_id": {
+            "$oid": "5a649d7feaf9b03b64a8f8a8"
+        },
+        "nome": "everton",
+        "email": "egmsantos2@yahoo.com.br",
+        "senha": "dsa3432",
+        "favoritos": [
+            {
+                "idLaboratorio": "",
+                "nome": "Lavoisier",
+            }
+        ]
+    },
+]

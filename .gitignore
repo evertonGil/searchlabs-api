@@ -56,3 +56,6 @@ screenshot-signup-*.png
 package-lock.json
 *.docx
 *.tmp
+
+# arquivos de imagens local
+app/documentos/imagens/*

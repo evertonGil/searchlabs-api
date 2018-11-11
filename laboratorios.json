@@ -3,38 +3,29 @@
         "_id": {
             "$oid": "5a649d7feaf9b03b64a8f8a8"
         },
-        "nomeEmpresa": "Lavoisier",
-        "email": "",
-        "cnpj": 1234564894,
+        "nome": "Lavoisier",
+        "razaoSocial": "lav inc",
+        "email": "email@gmail.com",
+        "cnpj": "1234564894",
+        "logotipo": "base64",
+        "fotoLaboratorios": "base64",
         "senha": "teste123",
-        "locais": [
+        "logradouro": "Av. Mateo Bei",
+        "complemento": "Cj 19",
+        "numero": "20",
+        "bairro": "Sao Mateus",
+        "cidade": "Sao Paulo",
+        "estado": "Sao Paulo",
+        "telefone1": "12315649821",
+        "telefone2": "12315649821",
+        "textoInformativo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad at. Duis aute irure dolor in reprehenderit in voluptate velit esse ",
+        "exames": [
             {
-                "_id": {
-                    "$oid": "1a9d7heaf9b03b64adsa8f8a3"
-                },
-                "idLaboratorio": "5a649d7feaf9b03b64a8f8a8",
-                "nomeUnidade": "Unidade Mateo Bei",
-                "telefone": "(11) 9090-4040",
-                "numero": 20,
-                "logradouro": "Av. Mateo Bei",
-                "complemento": "Cj 19",
-                "bairro": "Sao Mateus",
-                "cidade": "Sao Paulo",
-                "estado": "Sao Paulo",
-                "location": {
-                    "type": "Point",
-                    "coordinates": [
-                        -73.856077,
-                        40.848447
-                    ],
-                },
-                "exames": [
-                    {
-                        "nome": "Hemograma",
-                        "preco": "R$ 45,55"
-                    }
-                ]
+                "id": 1,
+                "idTiposExame": "78ghj43g4hj3ghj4bnm",
+                "descricao": "Tomografia Computadorizada",
+                "valor": "20.8"
             }
-        ],
+        ]
     },
 ]

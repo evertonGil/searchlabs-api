@@ -2,15 +2,20 @@ var logger = require('../services/logger');
 
 
 resposatas = {}
-resposatas.respostapadrao = function (sucesso, obj, mensagem = "") {
+resposatas.respostapadrao = function (sucesso, obj, mensagem = "", contextAttatch = {}) {
 
-    return {
+    const retorno = {
         context: {
             sucess: sucesso,
             message: mensagem
+
         },
         object: obj
-    }
+    };
+
+    Object.assign(retorno.context, contextAttatch);
+
+    return retorno;
 }
 
 resposatas.retornarErro = function (error) {

@@ -1,8 +1,25 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema({
-    nomeEmpresa: String,
+    nome: String,
+    razaoSocial: String,
     email: String,
     cnpj: Number,
-    senha: String
+    logotipo: String,
+    fotoLaboratorios: String,
+    senha: String,
+    logradouro: String,
+    complemento: String,
+    numero: String,
+    bairro: String,
+    cidade: String,
+    estado: String,
+    telefone1: String,
+    telefone2: String,
+    exames: [{
+        id: String,
+        nome: String,
+        valor: String
+    }]
+
 })
 mongoose.model('Laboratorio', schema, 'laboratorios');
