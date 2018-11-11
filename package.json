@@ -7,7 +7,7 @@
     "node": "8.9.3"
   },
   "scripts": {
-    "start": "nodemon app",
+    "start": "node app",
     "test": "node node_modules/mocha/bin/mocha",
     "build": " concurrently  \"mongod\" \" set NODE_ENV = teste\" \"node app\"",
     "watch": "babel public/js/app-es6 -d public/js/app --source-maps --watch"
