@@ -1,52 +1,74 @@
 # searchlabs-api
-##Telas de login
 
-[Post]: usuárioLogar/
+## Telas de login
 
-descrição	Usado para logar o usuário, a API vai retornar um token que tem que ser usado para acessar API’s que são liberados somente para usuários
-Body	{
+### [Post]: usuárioLogar/
+
+* **descrição**	Usado para logar o usuário, a API vai retornar um token que tem que ser usado para acessar API’s que são liberados somente para usuários
+
+* **Body**	
+```{
 “email”:””,
 “senha”:””
 }
+```
 
-Response header	x-access-token: HJK&*%¨*G785678gjhgJghjfg
-Response de sucesso	{
+* **Response header**	x-access-token: HJK&*%¨*G785678gjhgJghjfg
+
+* **Response de sucesso**	
+```
+{
     "context": {
         "sucess": true,
         "message": "Login Efetuado com sucesso!"
     },
     "object": [  ]
 }
-Response de erros	????
+```
+* **Response de erros**	????
 
  
-[Post]: laboratorioLogar/
+### [Post]: laboratorioLogar/
 
-descrição	Usado para logar o laboratório, a API vai retornar um token que tem que ser usado para acessar API’s que são liberados somente para laboratórios
-Body	{
+* **descrição**
+	
+Usado para logar o laboratório, a API vai retornar um token que tem que ser usado para acessar API’s que são liberados somente para laboratórios
+
+* **Body**	
+```
+{
 “email”:””,
 “senha”:””
 }
+```
 
-Response header	x-access-token: HJK&*%¨*G785678gjhgJghjfg
-Response de sucesso	{
+* **Response header** x-access-token: HJK&*%¨*G785678gjhgJghjfg
+
+* **Response de sucesso**
+```
+{
     "context": {
         "sucess": true,
         "message": "Login Efetuado com sucesso!"
     },
     "object": [  ]
 }
-Response de erros	????
+```
+
+* **Response de erros**	????
 
 
  
-##Telas de Cadastro - Laboratório
+## Telas de Cadastro - Laboratório
 [Post]: laboratorios/
 
-Descrição	End-point usado para criar um novo laboratório, para simplificar a aplicação, nessa fase mesmo, 
-- Assim que o laboratório salvar esses primeiros dados eu já vou gerar um token e devolver pra vocês no Response header, 
-- Vocês precisam passar esse header nas telas seguintes, como se o laboratório já estivesse logado no sistema.
-Request Body	{
+* **Descrição**	End-point usado para criar um novo laboratório, para simplificar a aplicação, nessa fase mesmo, 
+  * Assim que o laboratório salvar esses primeiros dados eu já vou gerar um token e devolver pra vocês no Response header, 
+  * Vocês precisam passar esse header nas telas seguintes, como se o laboratório já estivesse logado no sistema.
+
+* **Request Body**	
+```
+{
        "nome": "Lavoisier",
         "razaoSocial": "lav inc",
         "email": "email@gmail.com",
@@ -55,9 +77,13 @@ Request Body	{
         "fotoLaboratorios": "base64",
         "senha": "teste123",
 }
+```
 
-Response header	x-access-token: HJK&*%¨*G785678gjhgJghjfg
-Response Body	{
+* **Response header**	x-access-token: HJK&*%¨*G785678gjhgJghjfg
+
+* **Response Body**	
+```
+{
     "context": {
         "sucess": true,
         "message": "Laboratório cadastrado com sucesso!"
@@ -73,15 +99,21 @@ Response Body	{
         "senha": "teste123",
      }
 }
-Response de erros	????
+```
+
+* **Response de erros**	????
 
 
  
-[Put]: laboratorioContato/:id
+### [Put]: laboratorioContato/:id
 
-Descrição	End-point usado para alterar/salvar dados de contato do laboratório.
-Request Header	x-access-token: HJK&*%¨*G785678gjhgJghjfg
-Request Body	{
+* **Descrição**	End-point usado para alterar/salvar dados de contato do laboratório.
+
+* **Request Header**	x-access-token: HJK&*%¨*G785678gjhgJghjfg
+
+* **Request Body**	
+```
+{
        "logradouro": "Av. Mateo Bei",
         "complemento": "Cj 19",
         "numero": "20",
@@ -92,9 +124,13 @@ Request Body	{
         "telefone2": "12315649821"
         “textoInformativo”: “texto.....”
 }
+```
 
-Response header	x-access-token: HJK&*%¨*G785678gjhgJghjfg
-Response Body	{
+* **Response header**	x-access-token: HJK&*%¨*G785678gjhgJghjfg
+
+* **Response Body**	
+```
+{
     "context": {
         "sucess": true,
         "message": "Dados de contato atualizado com sucesso!"
@@ -113,14 +149,20 @@ Response Body	{
 
    }
 }
-Response de erros	????
+```
+
+* **Response de erros**	????
 
  
-[Put]: laboratorioExames/:id
+### [Put]: laboratorioExames/:id
 
-descrição	End-point usado para alterar/salvar dados de exame do laboratório.
-Request Header	x-access-token: HJK&*%¨*G785678gjhgJghjfg
-Request Body	{
+* **descrição**	End-point usado para alterar/salvar dados de exame do laboratório.
+
+* **Request Header**	x-access-token: HJK&*%¨*G785678gjhgJghjfg
+
+* **Request Body**	
+```
+{
      "exames": [
             {
                 "id": 1,
@@ -136,8 +178,13 @@ Request Body	{
             },
         ]
 }
-Response header	x-access-token: HJK&*%¨*G785678gjhgJghjfg
-Response Body	{
+```
+
+**Response header**	x-access-token: HJK&*%¨*G785678gjhgJghjfg
+
+**Response Body**	
+```
+{
     "context": {
         "sucess": true,
         "message": "Dados de Exame atualizado com sucesso!"
@@ -160,17 +207,25 @@ Response Body	{
         ]
    }
 }
-Response de erros	????
+```
+
+* **Response de erros**	????
 
 
  
-[Get]: laboratorios/:id
+### [Get]: laboratorios/:id
 
-descrição	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
-Request Header	
-Request Body	 Não existe response body em Get
-Response header	
-Response Body	{
+* **Descrição**	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
+
+* **Request Header**	
+
+* **Request Body**	 Não existe response body em Get
+
+* **Response header**
+	
+* **Response Body**	
+```
+{
     "context": {
         "sucess": true,
         "message": ""
@@ -201,15 +256,23 @@ Response Body	{
             ]
         }
 }
-Response de erros	????
+```
+
+* **Response de erros**	????
 
 
  
-##Tela de Cadastro  - Usuário
-[Post]: Usuário/
-descrição	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
-Request Header	
-Request Body	 {
+## Tela de Cadastro  - Usuário
+
+### [Post]: Usuário/
+
+* **descrição**	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
+
+* **Request Header**
+	
+* **Request Body**	 
+```
+{
         "nome": "everton",
         "email": "egmsantos2@yahoo.com.br",
         "senha": "dsa3432",
@@ -227,32 +290,49 @@ Response Body	{
              "senha": "dsa3432",
         }
 }
-Response de erros	????
+```
+
+* **Response de erros**	????
 
 
  
-##Tela de pesquisa
+## Tela de pesquisa
 
-[Get]: laboratorios/
-descrição	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
-queryString	Para melhorar a performance use paginação:
-?nome= Lavoisier&numItens=5&pageNum=5
+### [Get]: laboratorios/
 
-Campos que podem ser usados na query string:
-nome:  pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais)..
-razaoSocial: pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais).e.
-logradouro: pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais).
-bairro: pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais).
-cidade: pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais).
-estado: pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais).
-exame: string 
-numItens: O numero de itens a serem retornados
-pageNum: O numero pagina atual
+* **descrição**	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
 
-Request Header	
-Request Body	 Não existe response body em Get
-Response header	
-Response Body	{
+* **queryString** Para melhorar a performance use paginação:
+  * **?nome=** Lavoisier&numItens=5&pageNum=5
+
+  * **Campos** que podem ser usados na query string:
+
+  * **nome:**  pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais)..
+
+  * **razaoSocial:** pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais).e.
+
+  * **logradouro:** pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais).
+
+  * **bairro:** pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais).
+
+  * **cidade:** pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais).
+
+  * **estado:** pesquisa regex (tipo o like do sql), procura por partes do texto e não case sensitive (não ignora carateres especiais).
+
+  * **exame:** string 
+
+  * **numItens:** O numero de itens a serem retornados
+
+  * **pageNum:** O numero pagina atual
+
+* **Request Header**	
+* **Request Body**	 Não existe response body em Get
+* **Response header**
+	
+* **Response Body**
+	
+```
+{
     "context": {
         "sucess": true,
         "message": ""
@@ -283,16 +363,23 @@ Response Body	{
             ]
         }
 }
-Response de erros	????
+```
+* **Response de erros**	????
 
  
-[Get]: TiposExame/
+### [Get]: TiposExame/
 
-descrição	End-point usado para recuperar todos os tipos de exame do sistema
-Request Header	
-Request Body	 Não existe response body em Get
-Response header	
-Response Body	{
+* **descrição**	End-point usado para recuperar todos os tipos de exame do sistema
+
+* **Request Header**	
+
+* **Request Body**	 Não existe response body em Get
+
+* **Response header**	
+
+* **Response Body**	
+```
+{
     "context": {
         "sucess": true,
         "message": "”
@@ -308,18 +395,26 @@ Response Body	{
         }
     ]
 }
+```
 Response de erros	????
 
 
  
-##Tela de Laboratorio
-[Get]: laboratorios/:id
+## Tela de Laboratorio
 
-descrição	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
-Request Header	
-Request Body	 Não existe response body em Get
-Response header	
-Response Body	{
+### [Get]: laboratorios/:id
+
+* **descrição**	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
+
+* **Request Header**
+	
+* **Request Body**	 Não existe response body em Get
+
+* **Response header**
+	
+* **Response Body**	
+```
+{
     "context": {
         "sucess": true,
         "message": "
@@ -352,19 +447,27 @@ Response Body	{
             ]
         }
 }
-Response de erros	????
+```
+* **Response de erros**	????
 
  
-[Post]: favoritosUsuario/:id
+### [Post]: favoritosUsuario/:id
 
-descrição	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
-Request Header	
-Request Body	        {
+* **descrição**	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
+* **Request Header**	
+* **Request Body**	       
+```
+ {
             "idLaboratorio": "",
             "nome": "Lavoisier",
         }
-Response header	
-Response Body	{
+```
+
+* **Response header**
+	
+* **Response Body**
+```	
+{
     "context": {
         "sucess": true,
         "message": "Laboratório favoritado com sucesso!"
@@ -381,18 +484,27 @@ Response Body	{
 ]
         }
 }
-Response de erros	????
+```
+
+* **Response de erros**	????
 
 
  
-##Tela Perfil Cliente
-[Get]: Usuário/
+## Tela Perfil Cliente
 
-descrição	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
-Request Header	
-Request Body	Não existe body para Get
-Response header	
-Response Body	{
+### [Get]: Usuário/
+
+* **descrição**	End-point usado para recuperar todos os dados do laboratório, que não sejam sensíveis, como senha.
+
+* **Request Header**
+	
+* **Request Body**	Não existe body para Get
+
+* **Response header**	
+
+* **Response Body**	
+```
+{
     "context": {
         "sucess": true,
         "message": "
@@ -409,19 +521,30 @@ Response Body	{
 ]
         }
 }
-Response de erros	????
+```
+
+* **Response de erros**	????
 
  
-Extras
+## Extras
 
-[Post]: TiposExame/
-descrição	End-point usado para cadastrar novos tipos de exame no sistema
-Request Header	
-Request Body	 {
+### [Post]: TiposExame/
+
+* **descrição**	End-point usado para cadastrar novos tipos de exame no sistema
+
+* **Request Header**	
+
+* **Request Body**	
+```
+ {
             "nome": "Raio X",
   }
-Response header	
-Response Body	{
+```
+* **Response header**	
+
+* **Response Body**
+```	
+{
     "context": {
         "sucess": true,
         "message": "Dados de contato atualizado com sucesso!"
@@ -431,21 +554,29 @@ Response Body	{
             "nome": "Raio X",
        }
 }
-Response de erros	{
+```
+
+* **Response de erros**	
+```
+{
     "context": {
         "sucess": false,
         "message": "Tipo de Exame já existente!"
     },
   "object:  {  }
 }
-
+```
 
  
-[Put]: TiposExame/:id
+### [Put]: TiposExame/:id
 
-descrição	End-point usado para alterar o nome de um tipo de exame especifico
-Request Header	
-Request Body	 {
+* **descrição**	End-point usado para alterar o nome de um tipo de exame especifico
+
+* **Request Header**
+	
+* **Request Body	 
+```
+{
             "nome": "Raio X",
   }
 Response header	
@@ -459,7 +590,8 @@ Response Body	{
             "nome": "Raio X",
        }
 }
-Response de erros	???
+```
+* **Response de erros**	???
 
 
  
