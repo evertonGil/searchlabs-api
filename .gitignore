@@ -2,13 +2,10 @@
 /dist
 /tmp
 /out-tsc
-logs
 
 # dependencies
 /node_modules
-/app/logs/errors-internet-banking
-/app/logs
-/logs
+/app/logs/errors-searchlabs
 
 
 # IDEs and editors
