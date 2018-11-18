@@ -7,10 +7,7 @@
         "email": "egmsantos2@yahoo.com.br",
         "senha": "dsa3432",
         "favoritos": [
-            {
-                "idLaboratorio": "",
-                "nome": "Lavoisier",
-            }
+            { "idLaboratorio": "5be7d261118e4e084cbba928", "nome": "Lavoisier" }
         ]
     },
 ]

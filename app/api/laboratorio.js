@@ -226,6 +226,11 @@ module.exports = function (app) {
 		novoLaboratorio.removeId()
 		console.log("[criaLaboratorio]:", novoLaboratorio)
 
+
+		if (req.authentication._id != req.params.id) {
+            return res.status(403).send(respostapadrao(false, {}, 'Um Laboratorio não pode atualizar os dados de outro Laboratorio'));
+        }
+
 		model.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, novoLaboratorio, { upsert: false, new: true })
 			.then(
 				(laboratorio) => {
@@ -257,6 +262,11 @@ module.exports = function (app) {
 	}
 
 	api.deletarLaboratorio = (req, res) => {
+
+		if (req.authentication._id != req.params.id) {
+            return res.status(403).send(respostapadrao(false, {}, 'Um Laboratorio não pode deletar outro Laboratorio'));
+		}
+		
 		return model
 			.deleteOne({ "_id": req.params.id })
 			.then((laboratorio) => {

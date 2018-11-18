@@ -1,6 +1,5 @@
 var LaboratorioBaseModel = require('../models/laboratorioModel');
 var mongoose = require('mongoose');
-var modelLocal = mongoose.model('Local');
 const mime = require('mime-types')
 const fs = require('fs');
 const sharp = require('sharp');
@@ -23,20 +22,6 @@ laboratorioUtils.comporLaboratorio = function (laboratorio, cb) {
 	}
 
 	cb(undefined, laboratorioM)
-
-	// modelLocal.find({ idLaboratorio: laboratorioM._id })
-	// 	.then(
-	// 		locais => {
-	// 			if (locais && locais.length > 0) {
-	// 				console.log('[locais]', locais, laboratorioM)
-	// 				laboratorioM.montarLocais(locais)
-	// 			}
-	// 			cb(undefined, laboratorioM)
-	// 		},
-	// 		erro => {
-	// 			cb(erro)
-	// 		}
-	// 	)
 }
 
 laboratorioUtils.gerarSharpComBase64 = function (base64) {
@@ -50,11 +35,16 @@ laboratorioUtils.gerarSharpComBase64 = function (base64) {
 
 laboratorioUtils.gerarBase64dePath = function (path) {
 	if(path.length < 300){
-		let buff = fs.readFileSync(path);
-		const mimetype = mime.lookup(path)
-		const baseString64 = `data:${mimetype};base64`;
-		let base64data = buff.toString('base64');
-		return baseString64 + base64data;
+		try{
+			let buff = fs.readFileSync(path);
+			const mimetype = mime.lookup(path)
+			const baseString64 = `data:${mimetype};base64`;
+			let base64data = buff.toString('base64');
+			return baseString64 + base64data;
+		}
+		catch (e) {
+			return path;
+		}
 	}
 	return path;
 }
