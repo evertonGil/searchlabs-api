@@ -29,14 +29,14 @@ module.exports = function (app) {
 							callback(false, path);
 						})
 						.catch(err => {
-							console.log(err)
-							logger.log('error', err);
+							console.log('[error1]',err)
+							logger.log('[error1]', err);
 							callback(true, path);
 						});
 				})
 				.catch(err => {
-					console.log(err);
-					logger.log('error', err);
+					console.log('[error2]', err);
+					logger.log('[error2]', err);
 					callback(true);
 				});
 		} else {

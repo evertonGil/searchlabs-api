@@ -26,6 +26,7 @@ laboratorioUtils.comporLaboratorio = function (laboratorio, cb) {
 
 laboratorioUtils.gerarSharpComBase64 = function (base64) {
 	const stringUrl = base64.split(',');
+	console.log('[gerarSharpComBase64]', stringUrl);
 	const valor = stringUrl.slice(1, stringUrl.length).join(',');
 	var buf = Buffer.from(valor, 'base64');
 	const imageSharp = sharp(buf);
