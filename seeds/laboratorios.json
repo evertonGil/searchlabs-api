@@ -1,0 +1,200 @@
+[
+    {
+        "_id": {
+            "$oid": "5bf6118a1d63b41f4c32e2af"
+        },
+        "nome": "Lavoisier",
+        "razaoSocial": "lav inc",
+        "email": "email@gmail.com",
+        "cnpj": "65558737000170",
+        "logotipo": "",
+        "fotoLaboratorios": "",
+        "cep": "030-0000",
+        "senha": "teste123",
+        "logradouro": "Av. Mateo Bei",
+        "complemento": "Cj 19",
+        "numero": "20",
+        "bairro": "Sao Mateus",
+        "cidade": "Sao Paulo",
+        "estado": "Sao Paulo",
+        "telefone1": "12315649821",
+        "telefone2": "12315649821",
+        "textoInformativo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad at. Duis aute irure dolor in reprehenderit in voluptate velit esse ",
+        "exames": [
+            {
+                "id": 1,
+                "idTiposExame": "5bf5f4f41257d61dcca57d5e",
+                "descricao": "Tomografia",
+                "valor": "20.8"
+            },
+            {
+                "id": 3,
+                "idTiposExame": "5bf5f4f41257d61dcca57d5f",
+                "descricao": "Tomografia c/ Contraste",
+                "valor": "20.8"
+            },
+            {
+                "id": 2,
+                "idTiposExame": "5bf5f4f41257d61dcca57d60",
+                "descricao": "Radiografia computadorizada",
+                "valor": "20.8"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5bf6118a1d63b41f4c32e2b0"
+        },
+        "nome": "Fleury",
+        "razaoSocial": "Fleury industrias S/A",
+        "email": "email@gmail.com",
+        "cnpj": "17686641000144",
+        "logotipo": "",
+        "fotoLaboratorios": "",
+        "senha": "teste123",
+        "logradouro": "Av. Aricanduva",
+        "complemento": "",
+        "numero": "2120",
+        "cep": "030-0000",
+        "bairro": "Aricanduva",
+        "cidade": "Sao Paulo",
+        "estado": "Sao Paulo",
+        "telefone1": "12315649821",
+        "telefone2": "12315649821",
+        "textoInformativo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad at. Duis aute irure dolor in reprehenderit in voluptate velit esse ",
+        "exames": [
+            {
+                "id": 1,
+                "idTiposExame": "5bf5f4f41257d61dcca57d5e",
+                "descricao": "Tomografia",
+                "valor": "20.8"
+            },
+            {
+                "id": 3,
+                "idTiposExame": "5bf5f4f41257d61dcca57d5f",
+                "descricao": "Tomografia c/ Contraste",
+                "valor": "20.8"
+            },
+            {
+                "id": 2,
+                "idTiposExame": "5bf5f4f41257d61dcca57d60",
+                "descricao": "Radiografia computadorizada",
+                "valor": "20.8"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5bf6118a1d63b41f4c32e2b1"
+        },
+        "nome": "Centro de Diagnosticos CDB",
+        "razaoSocial": "CDB S/A",
+        "email": "email@gmail.com",
+        "cnpj": "08794865000189",
+        "logotipo": "",
+        "fotoLaboratorios": "",
+        "senha": "teste123",
+        "logradouro": "Av Faria Lima",
+        "complemento": "",
+        "numero": "220",
+        "cep": "030-0000",
+        "bairro": "Pinheiros",
+        "cidade": "Sao Paulo",
+        "estado": "Sao Paulo",
+        "telefone1": "11 3156821",
+        "telefone2": "11 3156498",
+        "textoInformativo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad at. Duis aute irure dolor in reprehenderit in voluptate velit esse ",
+        "exames": [
+            {
+                "id": 1,
+                "idTiposExame": "5bf5f4f41257d61dcca57d5f",
+                "descricao": "Tomografia c/ Contraste",
+                "valor": "220.8"
+            },
+            {
+                "id": 2,
+                "idTiposExame": "5bf5f4f41257d61dcca57d60",
+                "descricao": "Radiografia computadorizada",
+                "valor": "80"
+            },
+            {
+                "id": 3,
+                "idTiposExame": "5bf5f4f41257d61dcca57d61",
+                "descricao": "Hemograma Completo",
+                "valor": "50.5"
+            },
+            {
+                "id": 4,
+                "idTiposExame": "5bf5f4f41257d61dcca57d62",
+                "descricao": "Teste de Urease",
+                "valor": "60"
+            },
+            {
+                "id": 5,
+                "idTiposExame": "5bf5f4f41257d61dcca57d63",
+                "descricao": "Ultrasonografia",
+                "valor": "70"
+            },
+            {
+                "id": 1,
+                "idTiposExame": "5bf5f4f41257d61dcca57d5e",
+                "descricao": "Tomografia",
+                "valor": "30.8"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5bf6118a1d63b41f4c32e2b2"
+        },
+        "nome": "Delbony",
+        "razaoSocial": "Delbony Laboratorios S/A",
+        "email": "email@gmail.com",
+        "cnpj": "39192439000107",
+        "logotipo": "",
+        "fotoLaboratorios": "",
+        "senha": "teste123",
+        "logradouro": "Rua da Bela Cintra",
+        "complemento": "CJ 19",
+        "numero": "910",
+        "cep": "030-0000",
+        "bairro": "Consolação",
+        "cidade": "Sao Paulo",
+        "estado": "Sao Paulo",
+        "telefone1": "11 3564982",
+        "telefone2": "11 3156421",
+        "textoInformativo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad at. Duis aute irure dolor in reprehenderit in voluptate velit esse ",
+        "exames": [
+            {
+                "id": 1,
+                "idTiposExame": "5bf5f4f41257d61dcca57d5f",
+                "descricao": "Tomografia c/ Contraste",
+                "valor": "220.8"
+            },
+            {
+                "id": 2,
+                "idTiposExame": "5bf5f4f41257d61dcca57d60",
+                "descricao": "Radiografia computadorizada",
+                "valor": "80"
+            },
+            {
+                "id": 3,
+                "idTiposExame": "5bf5f4f41257d61dcca57d61",
+                "descricao": "Hemograma Completo",
+                "valor": "50.5"
+            },
+            {
+                "id": 5,
+                "idTiposExame": "5bf5f4f41257d61dcca57d63",
+                "descricao": "Ultrasonografia",
+                "valor": "70"
+            },
+            {
+                "id": 1,
+                "idTiposExame": "5bf5f4f41257d61dcca57d5e",
+                "descricao": "Tomografia",
+                "valor": "30.8"
+            }
+        ]
+    }
+]

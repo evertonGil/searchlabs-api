@@ -1,0 +1,50 @@
+[
+    {
+        "_id": {
+            "$oid": "5bf5f4f41257d61dcca57d5e"
+        },
+        "nome": "Tomografia"
+    },
+    {
+        "_id": {
+            "$oid": "5bf5f4f41257d61dcca57d5f"
+        },
+        "nome": "Tomografia c/ Contraste"
+    },
+    {
+        "_id": {
+            "$oid": "5bf5f4f41257d61dcca57d60"
+        },
+        "nome": "Radiografia computadorizada"
+    },
+    {
+        "_id": {
+            "$oid": "5bf5f4f41257d61dcca57d61"
+        },
+        "nome": "Hemograma Completo"
+    },
+    {
+        "_id": {
+            "$oid": "5bf5f4f41257d61dcca57d62"
+        },
+        "nome": "Teste de Urease"
+    },
+    {
+        "_id": {
+            "$oid": "5bf5f4f41257d61dcca57d63"
+        },
+        "nome": "Ultrasonografia"
+    },
+    {
+        "_id": {
+            "$oid": "5bf5f4f41257d61dcca57d64"
+        },
+        "nome": "Ressonancia Magnetica"
+    },
+    {
+        "_id": {
+            "$oid": "5bf5f4f41257d61dcca57d65"
+        },
+        "nome": "Teste parasitosico"
+    }
+]

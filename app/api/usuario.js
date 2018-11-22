@@ -1,8 +1,12 @@
 var mongoose = require('mongoose');
 var model = mongoose.model('Usuario');
+var modelLaboratorio = mongoose.model('Laboratorio');
 var logger = require('../services/logger');
 const { validationResult } = require('express-validator/check');
 const { respostapadrao, retornarErro } = require('../utils/resposta.utils');
+var LaboratorioBaseModel = require('../models/laboratorioModel');
+const { comporLaboratorio, gerarSharpComBase64 } = require('../utils/laboratorio.utils');
+const Async = require('async');
 
 module.exports = function (app) {
 
@@ -19,15 +23,35 @@ module.exports = function (app) {
                     res.status(400).send(respostapadrao(false, {}, `Usuario: ${req.params.id} não encontrado!`));
                 }
                 else {
-                    const _usuario = {
-                        _id: usuario._id,
-                        nome: usuario.nome,
-                        email: usuario.email,
-                        favoritos: usuario.favoritos,
-                        __v: usuario.__v
-                    };
 
-                    res.send(respostapadrao(true, _usuario, ''));
+                    const listaUsuariosMap = usuario.favoritos.map(favorito => {
+                        return new mongoose.Types.ObjectId(favorito.idLaboratorio);
+                    });
+
+                    console.log(listaUsuariosMap);
+
+                    modelLaboratorio.find({ '_id': { $in: listaUsuariosMap } })
+                        .then(laboratorios => {
+
+                            Async.mapSeries(laboratorios, (laboratorio, cb) => {
+
+                                comporLaboratorio(laboratorio, cb);
+
+                            }, (err, results) => {
+
+                                const _usuario = {
+                                    _id: usuario._id,
+                                    nome: usuario.nome,
+                                    email: usuario.email,
+                                    favoritos: results,
+                                    __v: usuario.__v
+                                };
+    
+                                res.send(respostapadrao(true, _usuario, ''));
+                            });
+
+                            
+                        });
                 }
             }, retornarErro.bind(res));
     }
@@ -38,7 +62,7 @@ module.exports = function (app) {
             return res.status(422).send(respostapadrao(false, {}, errors.array().toString()));
         }
 
-        
+
         if (req.authentication._id != req.params.id) {
             return res.status(403).send(respostapadrao(false, {}, 'Um usuario não pode atualizar dados de outro usuario'));
         }
@@ -55,7 +79,7 @@ module.exports = function (app) {
     }
 
     api.deletarUsuarioPorId = (req, res) => {
-        
+
         console.log(req.authentication._id, req.params.id);
 
         if (req.authentication._id != req.params.id) {

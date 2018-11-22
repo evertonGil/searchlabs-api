@@ -9,6 +9,7 @@ var schema = mongoose.Schema({
     senha: String,
     logradouro: String,
     complemento: String,
+    cep: String,
     numero: String,
     bairro: String,
     cidade: String,

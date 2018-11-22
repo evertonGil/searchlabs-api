@@ -7,7 +7,7 @@ const async = require('async'),
     var mongo = {
       "host": "127.0.0.1",
       "port": "27017",
-      "db": "internetbanking"
+      "db": "searchlabs"
     };
   
     before(function (done) {
@@ -17,16 +17,17 @@ const async = require('async'),
               callback(err);
             });
           },
+
           function (callback) {
-            var seedPath = path.resolve(__dirname + "/../seeds/correntistas.json");
+            var seedPath = path.resolve(__dirname + "/../seeds/tiposexames.json");
             //console.log(seedPath);
             mongoSeed.load(mongo.host, mongo.port, mongo.db, seedPath, "file",  function (err) {
               callback(err);
             });
           },
-          
+
           function (callback) {
-            var seedPath = path.resolve(__dirname + "/../seeds/transferencias.json");
+            var seedPath = path.resolve(__dirname + "/../seeds/laboratorios.json");
             //console.log(seedPath);
             mongoSeed.load(mongo.host, mongo.port, mongo.db, seedPath, "file",  function (err) {
               callback(err);
@@ -45,3 +46,8 @@ const async = require('async'),
     });
   
   });
+
+
+
+
+  // mongoexport --db searchlabs --collection tiposExames --out tiposExames-bk.json --jsonArray

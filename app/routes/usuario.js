@@ -5,9 +5,10 @@ module.exports = function(app){
 	app.post('/v1/usuario', api.criarUsuario)
 
 	// Autenticacao Usuario
-	app.use('/v1/usuario/*', apiLogin.verificatoken)
-
+	
 	app.get('/v1/usuario/:id', api.buscarUsuarioPorId)
+	
+	app.use('/v1/usuario/*', apiLogin.verificatoken)
 	app.delete('/v1/usuario/:id', api.deletarUsuarioPorId)
 	app.put('/v1/usuario/:id', api.atualizarUsuarioPorId)
 

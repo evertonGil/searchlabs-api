@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var model = mongoose.model('Usuario');
+var model = mongoose.model('TipoExame');
 const { validationResult } = require('express-validator/check');
 const { respostapadrao, retornarErro } = require('../utils/resposta.utils');
 
@@ -11,9 +11,7 @@ module.exports = function (app) {
 
         return model.find()
             .then((tiposExames) => {
-                if (tiposExames && tiposExames.length) {
-                    res.send(respostapadrao(true, tiposExames, ''));
-                }
+                res.send(respostapadrao(true, tiposExames, ''));
             }, retornarErro.bind(res));
     }
 

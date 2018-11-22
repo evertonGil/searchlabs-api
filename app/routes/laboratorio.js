@@ -11,7 +11,7 @@ module.exports = function (app) {
 	app.get('/v1/laboratorios/:id', api.buscarPorId);
 
 	// Autenticacao Usuario
-	app.use('/v1/laboratorios/:id*', apiLogin.verificatoken);
+	// app.use('/v1/laboratorios/:id*', apiLogin.verificatoken);
 
 	app.put('/v1/laboratorios/:id', api.atualizarLaboratorio);
 	app.put('/v1/laboratorioContato/:id', [check('cnpj').exists()], api.atualizarLaboratorio);

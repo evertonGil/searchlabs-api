@@ -105,7 +105,7 @@ module.exports = function (app) {
 		})
 	}
 
-	function devolverWebtoken(laboratorio, res){
+	function devolverWebtoken(laboratorio, res) {
 		const token = jwt.sign({ _id: laboratorio._id, cnpj: laboratorio.cnpj }, app.get('secret'), {
 			expiresIn: 3600
 		});
@@ -176,7 +176,7 @@ module.exports = function (app) {
 	}
 
 	api.criarLaboratorio = (req, res) => {
-
+		console.log(req.body);
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			return res.status(422).send(respostapadrao(false, {}, errors.array().toString()));
@@ -204,8 +204,8 @@ module.exports = function (app) {
 
 							model.create(novoLaboratorio).then(
 								(laboratorio) => {
-									
-									devolverWebtoken(laboratorio, res);	
+
+									devolverWebtoken(laboratorio, res);
 
 									res.send(respostapadrao(true, laboratorio));
 								},
@@ -224,12 +224,12 @@ module.exports = function (app) {
 		novoLaboratorio.atualizacao(req.body)
 		novoLaboratorio.esconderDadosSensiveis()
 		novoLaboratorio.removeId()
-		console.log("[criaLaboratorio]:", novoLaboratorio)
+		// console.log("[criaLaboratorio]:", novoLaboratorio)
 
 
-		if (req.authentication._id != req.params.id) {
-            return res.status(403).send(respostapadrao(false, {}, 'Um Laboratorio não pode atualizar os dados de outro Laboratorio'));
-        }
+		// if (req.authentication._id != req.params.id) {
+		// 	return res.status(403).send(respostapadrao(false, {}, 'Um Laboratorio não pode atualizar os dados de outro Laboratorio'));
+		// }
 
 		model.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, novoLaboratorio, { upsert: false, new: true })
 			.then(
@@ -243,7 +243,7 @@ module.exports = function (app) {
 
 						gerarArquivosAsyn(laboratorio, ['logotipo', 'fotoLaboratorios'], _dir, function (results) {
 
-							devolverWebtoken(laboratorio, res);							
+							devolverWebtoken(laboratorio, res);
 
 							res.send(respostapadrao(true, laboratorio, 'Laboratório atualizado com sucesso'));
 						})
@@ -264,9 +264,9 @@ module.exports = function (app) {
 	api.deletarLaboratorio = (req, res) => {
 
 		if (req.authentication._id != req.params.id) {
-            return res.status(403).send(respostapadrao(false, {}, 'Um Laboratorio não pode deletar outro Laboratorio'));
+			return res.status(403).send(respostapadrao(false, {}, 'Um Laboratorio não pode deletar outro Laboratorio'));
 		}
-		
+
 		return model
 			.deleteOne({ "_id": req.params.id })
 			.then((laboratorio) => {

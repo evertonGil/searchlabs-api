@@ -1,0 +1,37 @@
+[
+    {
+        "_id": {
+            "$oid": "5bf6168481e300284ce09efd"
+        },
+        "nome": "everton",
+        "email": "egmsantos2@yahoo.com.br",
+        "senha": "dsa3432",
+        "favoritos": [
+            {
+                "idLaboratorio": "5bf6118a1d63b41f4c32e2af"
+            },
+            {
+                "idLaboratorio": "5bf6118a1d63b41f4c32e2b0"
+            },
+            {
+                "idLaboratorio": "5bf6118a1d63b41f4c32e2b1"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "5bf6168481e300284ce09efe"
+        },
+        "nome": "Rafael",
+        "email": "rafael@email.com.br",
+        "senha": "teste1234",
+        "favoritos": [
+            {
+                "idLaboratorio": "5bf6118a1d63b41f4c32e2af"
+            },
+            {
+                "idLaboratorio": "5bf6118a1d63b41f4c32e2b0"
+            }
+        ]
+    }
+]

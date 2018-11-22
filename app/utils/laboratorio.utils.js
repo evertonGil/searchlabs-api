@@ -9,7 +9,7 @@ laboratorioUtils = {};
 laboratorioUtils.comporLaboratorio = function (laboratorio, cb) {
 
 	var laboratorioM = new LaboratorioBaseModel()
-	laboratorioM.novoInclusao(laboratorio)
+	laboratorioM.atualizacao(laboratorio)
 	laboratorioM.esconderDadosSensiveis()
 	// console.log('[laboratorioM]', laboratorioM)
 
