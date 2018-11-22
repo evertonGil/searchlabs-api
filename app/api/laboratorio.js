@@ -183,7 +183,7 @@ module.exports = function (app) {
 		}
 
 		const novoLaboratorio = new LaboratorioBaseModel()
-		novoLaboratorio.novoInclusao(req.body)
+		novoLaboratorio.atualizacao(req.body)
 		novoLaboratorio.esconderDadosSensiveis()
 
 
