@@ -1,0 +1,25 @@
+db.usuarios.update(
+    { "_id" : ObjectId("5bf033d4b6a43561f8b2fd70") }, 
+    { 
+        $addToSet: {
+            "favoritos": { "idLaboratorio": "5be7d261118e4e084cbba928", "nome": "Lavoisier" }
+        }
+    }, 
+    { upsert: true}
+)
+
+db.usuarios.update(
+    { "_id" : ObjectId("5bf033d4b6a43561f8b2fd70") }, 
+    { 
+        $pull: {
+            "favoritos": { "idLaboratorio": "5be7d624de6853153066ac9e"}
+        }
+    }, 
+    { upsert: true}
+)
+
+
+
+db.usuarios.find(
+    { "_id" : ObjectId("5bf033d4b6a43561f8b2fd70") }
+)

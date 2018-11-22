@@ -1,0 +1,28 @@
+{
+    "tiposexames": [
+        {
+            "nome": "Tomografia"
+        },
+        {
+            "nome": "Tomografia c/ Contraste"
+        },
+        {
+            "nome": "Radiografia computadorizada"
+        },
+        {
+            "nome": "Hemograma Completo"
+        },
+        {
+            "nome": "Teste de Urease"
+        },
+        {
+            "nome": "Ultrasonografia"
+        },
+        {
+            "nome": "Ressonancia Magnetica"
+        },
+        {
+            "nome": "Teste parasitosico"
+        }
+    ]
+}

@@ -18,7 +18,8 @@ var schema = mongoose.Schema({
     telefone2: String,
     exames: [{
         id: String,
-        nome: String,
+        descricao: String,
+        idTiposExame: String, 
         valor: String
     }]
 

@@ -55,4 +55,4 @@ package-lock.json
 *.tmp
 
 # arquivos de imagens local
-app/documentos/imagens/*
+# app/documentos/imagens/*

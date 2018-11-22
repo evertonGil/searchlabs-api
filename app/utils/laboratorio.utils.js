@@ -8,9 +8,9 @@ laboratorioUtils = {};
 
 laboratorioUtils.comporLaboratorio = function (laboratorio, cb) {
 
-	var laboratorioM = new LaboratorioBaseModel()
-	laboratorioM.atualizacao(laboratorio)
-	laboratorioM.esconderDadosSensiveis()
+	const laboratorioM = {};
+	Object.assign(laboratorioM, laboratorio._doc);
+	delete laboratorioM.senha;
 	// console.log('[laboratorioM]', laboratorioM)
 
 	if (laboratorioM.logotipo) {
@@ -34,8 +34,8 @@ laboratorioUtils.gerarSharpComBase64 = function (base64) {
 }
 
 laboratorioUtils.gerarBase64dePath = function (path) {
-	if(path.length < 300){
-		try{
+	if (path.length < 300) {
+		try {
 			let buff = fs.readFileSync(path);
 			const mimetype = mime.lookup(path)
 			const baseString64 = `data:${mimetype};base64`;

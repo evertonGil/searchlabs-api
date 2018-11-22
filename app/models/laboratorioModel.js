@@ -44,19 +44,4 @@ module.exports = function LaboratorioBaseModel() {
 	_this.esconderDadosSensiveis = function () {
 		delete _this.senha;
 	}
-
-	_this.montarLocais = function (locais) {
-		_this.locais = _this.locais || [];
-
-		if (Array.isArray(locais)) {
-
-			locais.forEach(local => {
-
-				_this.locais.push(local)
-			})
-
-		} else {
-			_this.locais.push(locais)
-		}
-	}
 }

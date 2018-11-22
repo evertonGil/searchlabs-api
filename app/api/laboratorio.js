@@ -47,28 +47,80 @@ module.exports = function (app) {
 
 	}
 
-	function montarquery(queryOrigin, itensText) {
+	function montarqueryOr(queryOrigin, itensText) {
 		const novaquery = {};
 		Object.assign(novaquery, queryOrigin);
-
 		delete novaquery.numItens;
 		delete novaquery.pageNum;
 
+		const novoArray = [];
+
+
 		itensText.forEach(key => {
 			if (novaquery[key] && novaquery[key].length > 0) {
-				novaquery[key] = { $regex: novaquery[key], $options: 'i' };
+
+				const queryItem = {};
+
+				queryItem[key] = { $regex: novaquery[key], $options: 'i' };
+
+				console.log('queryItem', queryItem);
+				novoArray.push(queryItem);
 			}
 		});
 
-		return novaquery;
+		return novoArray;
 	}
 
-	function queryComPaginacao(modelQuery, parametros, textItens) {
+	function queryComPaginacao(modelQuery, parametros, textItens, regiao) {
+		console.log('parametros', parametros);
+		const queryVazia = parametros.constructor === Object && Object.keys(parametros).length === 0;
+
 		const numItens = parametros.numItens;
 		const pageNum = parametros.pageNum;
 		const skips = numItens * (pageNum - 1);
 
-		const query = montarquery(parametros, textItens);
+		const regioes = regiao.filter(keyR => {
+			return parametros[keyR];
+		});
+
+		let query = {};
+
+		if (!queryVazia) {
+
+			query['$and'] = [];
+
+			if (regioes && regioes.length) {
+				console.log('regiao');
+				parametros.cidade = parametros.regiao;
+				parametros.estado = parametros.regiao;
+				parametros.logradouro = parametros.regiao;
+				parametros.bairro = parametros.regiao;
+
+				query['$and'].push({ $or: montarqueryOr(parametros, regiao) });
+			}
+
+			if (parametros.exame) {
+				const exames = {
+					exames: { $elemMatch: { descricao: { '$regex': parametros.exame, '$options': 'i' } } }
+				};
+				query['$and'].push(exames);
+			}
+
+			if (textItens) {
+				textItens.forEach(key => {
+					if (parametros[key]) {
+						const objItem = {};
+
+						objItem[key] = { '$regex': parametros[key], '$options': 'i' };
+						query['$and'].push(objItem)
+					}
+
+				})
+			}
+
+		}
+
+		console.log('[Query]', query);
 
 		return modelQuery
 			.find(query)
@@ -142,7 +194,7 @@ module.exports = function (app) {
 		model.find().estimatedDocumentCount()
 			.then(totalCount => {
 
-				return queryComPaginacao(model, parametros, ['nome', 'razaoSocial', 'logradouro', 'bairro', 'cidade', 'estado'])
+				return queryComPaginacao(model, parametros, ['email', 'nome', 'razaoSocial'], ['logradouro', 'bairro', 'cidade', 'estado'])
 					.then(
 						laboratorios => {
 
@@ -161,6 +213,7 @@ module.exports = function (app) {
 
 								}, (err, results) => {
 
+									console.log(results);
 									res.send(respostapadrao(true, results, '', {
 										itens: results.length,
 										pageNum: parametros.pageNum,
@@ -224,40 +277,48 @@ module.exports = function (app) {
 		novoLaboratorio.atualizacao(req.body)
 		novoLaboratorio.esconderDadosSensiveis()
 		novoLaboratorio.removeId()
-		// console.log("[criaLaboratorio]:", novoLaboratorio)
 
+		console.log(novoLaboratorio);
 
-		// if (req.authentication._id != req.params.id) {
-		// 	return res.status(403).send(respostapadrao(false, {}, 'Um Laboratorio não pode atualizar os dados de outro Laboratorio'));
-		// }
+		function atualizar(laboratorioTratado) {
 
-		model.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, novoLaboratorio, { upsert: false, new: true })
-			.then(
-				(laboratorio) => {
-					console.log('laboratorios encontrado', laboratorio)
-					if (laboratorio) {
-
-						const _dir = criarDiretorio(laboratorio.nome);
-
-
-
-						gerarArquivosAsyn(laboratorio, ['logotipo', 'fotoLaboratorios'], _dir, function (results) {
+			model.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, laboratorioTratado, { upsert: false, new: true })
+				.then(
+					(laboratorio) => {
+						// console.log('laboratorios encontrado', laboratorio)
+						if (laboratorio) {
 
 							devolverWebtoken(laboratorio, res);
 
 							res.send(respostapadrao(true, laboratorio, 'Laboratório atualizado com sucesso'));
-						})
 
-					} else {
+						} else {
 
-						res.status(400).send(respostapadrao(false, {}, 'Laboratorio não encontrado na base'));
+							res.status(400).send(respostapadrao(false, {}, 'Laboratorio não encontrado na base'));
+						}
+					},
+					(erroFind) => {
+						logger.log('error', erroFind);
+						res.status(400).send(respostapadrao(false, {}, 'Não foi possivel cadastrar o Laboratorio').object.messageDB = erroFind)
 					}
-				},
-				(erroFind) => {
-					logger.log('error', erroFind);
-					res.status(400).send(respostapadrao(false, {}, 'Não foi possivel cadastrar o Laboratorio').object.messageDB = erroFind)
-				}
-			);
+				);
+		}
+
+
+		if (novoLaboratorio.logotipo || novoLaboratorio.fotoLaboratorios) {
+			const _dir = criarDiretorio(novoLaboratorio.nome);
+			gerarArquivosAsyn(novoLaboratorio, ['logotipo', 'fotoLaboratorios'], _dir, results => {
+				novoLaboratorio.logotipo = results.logotipo;
+				novoLaboratorio.fotoLaboratorios = results.fotoLaboratorios;
+
+				console.log('com logotipo', novoLaboratorio);
+				atualizar(novoLaboratorio);
+			});
+		} else {
+			atualizar(novoLaboratorio);
+		}
+
+
 
 	}
 
