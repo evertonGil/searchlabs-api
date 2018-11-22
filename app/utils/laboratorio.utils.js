@@ -39,7 +39,7 @@ laboratorioUtils.gerarBase64dePath = function (path) {
 		try {
 			let buff = fs.readFileSync(path);
 			const mimetype = mime.lookup(path)
-			const baseString64 = `data:${mimetype};base64`;
+			const baseString64 = `data:${mimetype};base64,`;
 			let base64data = buff.toString('base64');
 			return baseString64 + base64data;
 		}

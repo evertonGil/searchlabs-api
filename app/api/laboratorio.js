@@ -213,7 +213,6 @@ module.exports = function (app) {
 
 								}, (err, results) => {
 
-									console.log(results);
 									res.send(respostapadrao(true, results, '', {
 										itens: results.length,
 										pageNum: parametros.pageNum,
@@ -229,7 +228,7 @@ module.exports = function (app) {
 	}
 
 	api.criarLaboratorio = (req, res) => {
-		console.log(req.body);
+		
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			return res.status(422).send(respostapadrao(false, {}, errors.array().toString()));
