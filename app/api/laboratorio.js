@@ -79,17 +79,13 @@ module.exports = function (app) {
 		const pageNum = parametros.pageNum;
 		const skips = numItens * (pageNum - 1);
 
-		const regioes = regiao.filter(keyR => {
-			return parametros[keyR];
-		});
-
 		let query = {};
 
-		if (!queryVazia) {
+		if (!queryVazia && parametros.regiao) {
 
 			query['$and'] = [];
 
-			if (regioes && regioes.length) {
+			if (parametros.regiao && parametros.regiao.length) {
 				console.log('regiao');
 				parametros.cidade = parametros.regiao;
 				parametros.estado = parametros.regiao;
