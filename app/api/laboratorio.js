@@ -29,7 +29,7 @@ module.exports = function (app) {
 							callback(false, path);
 						})
 						.catch(err => {
-							console.log('[error1]',err)
+							console.log('[error1]', err)
 							logger.log('[error1]', err);
 							callback(true, path);
 						});
@@ -208,6 +208,16 @@ module.exports = function (app) {
 									comporLaboratorio(laboratorio, cb);
 
 								}, (err, results) => {
+									if (parametros.exame) {
+
+										results = results.map(labResult => {
+											labResult.exames = [labResult.exames.find(exame => {
+												const encontrado = exame.descricao.includes(parametros.exame);
+												return encontrado;
+											})];
+											return labResult;
+										});
+									}
 
 									res.send(respostapadrao(true, results, '', {
 										itens: results.length,
@@ -224,7 +234,7 @@ module.exports = function (app) {
 	}
 
 	api.criarLaboratorio = (req, res) => {
-		
+
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			return res.status(422).send(respostapadrao(false, {}, errors.array().toString()));
